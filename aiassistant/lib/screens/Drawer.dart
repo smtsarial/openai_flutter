@@ -1,4 +1,5 @@
 import 'package:aiassistant/main.dart';
+import 'package:aiassistant/screens/widgets/SettingItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -16,10 +17,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      //backgroundColor: Colors.red,
+      //backgroundColor: Color(0xff343541),
       width: double.infinity,
       child: ListView(
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
           SizedBox(
             height: 50,
@@ -34,44 +35,101 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               },
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: const Text(' My Profile '),
-            onTap: () {
-              Navigator.pop(context);
-            },
+          Text(
+            'SETTINGS',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          ListTile(
-            leading: Icon(Icons.book),
-            title: const Text(' My Course '),
+
+          //container rounded gray border clickable item
+          SettingItemWidget(
             onTap: () {
-              Navigator.pop(context);
+              print('object');
             },
+            icon: Icon(Icons.language),
+            title: 'Language',
           ),
-          ListTile(
-            leading: Icon(Icons.workspace_premium),
-            title: const Text(' Go Premium '),
+          //for your subscription tab
+          SettingItemWidget(
             onTap: () {
-              Navigator.pop(context);
+              print('object');
             },
+            icon: Icon(Icons.subscriptions),
+            title: 'Subscription',
           ),
-          ListTile(
-            leading: Icon(Icons.video_label),
-            title: const Text(' Saved Videos '),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            'SUPPORT',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          //tab for help
+          SettingItemWidget(
             onTap: () {
-              Navigator.pop(context);
+              print('object');
             },
+            icon: Icon(Icons.help),
+            title: 'Help',
           ),
-          ListTile(
-            leading: Icon(Icons.edit),
-            title: const Text(' Edit Profile '),
+          //tab for restore purchases
+          SettingItemWidget(
             onTap: () {
-              Navigator.pop(context);
+              print('object');
             },
+            icon: Icon(Icons.restore),
+            title: 'Restore Purchases',
           ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: const Text('LogOut'),
+
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            'ABOUT',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          //tab for rate us
+          SettingItemWidget(
+            onTap: () {
+              print('object');
+            },
+            icon: Icon(Icons.star),
+            title: 'Rate Us',
+          ),
+          //tab for share with friends
+          SettingItemWidget(
+            onTap: () {
+              print('object');
+            },
+            icon: Icon(Icons.share),
+            title: 'Share with Friends',
+          ),
+          //tab for terms of use
+          SettingItemWidget(
+            onTap: () {
+              print('object');
+            },
+            icon: Icon(Icons.description),
+            title: 'Terms of Use',
+          ),
+          //tab for privacy policy
+          SettingItemWidget(
+            onTap: () {
+              print('object');
+            },
+            icon: Icon(Icons.privacy_tip),
+            title: 'Privacy Policy',
+          ),
+
+          SettingItemWidget(
             onTap: () async {
               auth.signOut();
               final SharedPreferences prefs = await _prefs;
@@ -79,6 +137,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => MyApp()));
             },
+            icon: Icon(Icons.logout),
+            title: 'Logout',
           ),
         ],
       ),
