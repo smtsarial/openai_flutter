@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:convert';
 
+import 'package:aiassistant/helpers/firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -33,5 +34,12 @@ Future<String> generateResponse(String prompt) async {
   // Do something with the response
   Map<String, dynamic> newresponse = jsonDecode(response.body);
   print(newresponse);
+
+  //save prompt and response to firestore UserMessages collection for user id
+  //get user id from shared preferences
+  final String userUid = prefs.getString('userUid')!;
+
+  await FirestoreHelper.saveUserMessage(
+      userUid, prompt, newresponse['choices'][0]['text']);
   return newresponse['choices'][0]['text'];
 }

@@ -21,12 +21,12 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        margin: EdgeInsets.symmetric(vertical: 3),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-          color: Colors.grey[200],
-          border: Border.all(color: Colors.grey[300]!),
-          borderRadius: BorderRadius.circular(25),
+          color: const Color.fromRGBO(40, 38, 56, 1),
+          border: Border.all(color: Colors.grey[800]!),
+          borderRadius: BorderRadius.circular(15),
         ),
         child: InkWell(
           onTap: widget.onTap as void Function()?,
@@ -35,7 +35,7 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
             children: [
               Row(
                 children: [
-                  Icon(widget.icon.icon),
+                  Icon(widget.icon.icon, color: Colors.white),
                   SizedBox(
                     width: 20,
                   ),
@@ -43,11 +43,15 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                     widget.title,
                     style: TextStyle(
                       fontSize: 16,
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              Icon(Icons.arrow_forward_ios),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.white,
+              ),
             ],
           ),
         ));

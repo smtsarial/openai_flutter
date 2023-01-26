@@ -29,7 +29,14 @@ class ChatMessageWidget extends StatelessWidget {
                       backgroundColor: const Color.fromRGBO(16, 163, 127, 1),
                       child: Icon(Icons.language)),
                 )
-              : Container(),
+              : Container(
+                  margin: const EdgeInsets.only(right: 16.0),
+                  child: const CircleAvatar(
+                    child: Icon(
+                      Icons.person,
+                    ),
+                  ),
+                ),
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(8.0),
@@ -45,16 +52,6 @@ class ChatMessageWidget extends StatelessWidget {
               ),
             ),
           ),
-          chatMessageType == ChatMessageType.bot
-              ? Container()
-              : Container(
-                  margin: const EdgeInsets.only(right: 16.0),
-                  child: const CircleAvatar(
-                    child: Icon(
-                      Icons.person,
-                    ),
-                  ),
-                ),
         ],
       ),
     );

@@ -17,7 +17,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      //backgroundColor: Color(0xff343541),
+      backgroundColor: Color(0xff343541),
       width: double.infinity,
       child: ListView(
         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -38,9 +38,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           Text(
             'SETTINGS',
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
 
           //container rounded gray border clickable item
@@ -65,9 +63,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           Text(
             'SUPPORT',
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           //tab for help
           SettingItemWidget(
@@ -92,9 +88,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           Text(
             'ABOUT',
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           //tab for rate us
           SettingItemWidget(
