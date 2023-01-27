@@ -48,7 +48,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     this.getUserLoggedIn();
-    // TODO: implement initState
     super.initState();
   }
 

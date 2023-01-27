@@ -7,8 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<String> generateResponse(String prompt) async {
-  const apiKey = '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';
-  print(prompt);
+  const apiKey = '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';
   //get user id from shared preferences
   var prefs = await SharedPreferences.getInstance();
   var userId = prefs.getString('userId');
@@ -33,7 +32,6 @@ Future<String> generateResponse(String prompt) async {
 
   // Do something with the response
   Map<String, dynamic> newresponse = jsonDecode(response.body);
-  print(newresponse);
 
   //save prompt and response to firestore UserMessages collection for user id
   //get user id from shared preferences
