@@ -29,7 +29,7 @@ class Authentication {
   }
 
   Future<bool> signUp(String email, String password, String name,
-      String surname, int weight) async {
+      String surname) async {
     final SharedPreferences prefs = await _prefs;
     try {
       print('object');
@@ -38,7 +38,7 @@ class Authentication {
       User? user = userCredentials.user;
       print('object' + user.toString());
       await FirestoreHelper.setNewUser(
-          user!.uid, email, password, name, surname, weight);
+          user!.uid, email, password, name, surname);
       prefs.setString('userUid', user.uid);
       return true;
     } catch (e) {

@@ -64,7 +64,7 @@ class _SignupPageContent extends State<SignupPageContent> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(
-            height: 50,
+            height: 150,
             width: 400,
           ),
           Center(
@@ -72,7 +72,7 @@ class _SignupPageContent extends State<SignupPageContent> {
               width: 400,
               alignment: Alignment.center,
               child: Text(
-                "Signup",
+                "Sign up",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 34,
@@ -152,23 +152,6 @@ class _SignupPageContent extends State<SignupPageContent> {
                         _isVisible = false;
                       });
                     },
-                    keyboardType: TextInputType.number,
-                    controller: weightController, // Controller for Username
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Weight",
-                        contentPadding: EdgeInsets.all(20)),
-                    onEditingComplete: () => FocusScope.of(context).nextFocus(),
-                  ),
-                  Divider(
-                    thickness: 3,
-                  ),
-                  TextFormField(
-                    onTap: () {
-                      setState(() {
-                        _isVisible = false;
-                      });
-                    },
                     keyboardType: TextInputType.emailAddress,
                     controller: emailController, // Controller for Username
                     decoration: InputDecoration(
@@ -186,7 +169,6 @@ class _SignupPageContent extends State<SignupPageContent> {
                         _isVisible = false;
                       });
                     },
-
                     controller: passwordController1, // Controller for Password
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -261,14 +243,12 @@ class _SignupPageContent extends State<SignupPageContent> {
                       passwordController1.text == passwordController2.text &&
                       passwordController2.text != "" &&
                       auth.isPasswordCompliant(passwordController1.text)) {
-                    print("I got in here");
                     await auth
                         .signUp(
                       emailController.text,
                       passwordController1.text,
                       nameController.text,
                       surnameController.text,
-                      int.parse(weightController.text),
                     )
                         .then((value) {
                       if (!value) {

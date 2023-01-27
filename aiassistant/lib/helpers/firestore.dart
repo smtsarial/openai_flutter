@@ -51,15 +51,10 @@ class FirestoreHelper {
   }
 
   static Future setNewUser(String uid, String email, String password,
-      String name, String surname, int weight) async {
+      String name, String surname) async {
     try {
-      await db.collection('users').doc(uid).set({
-        'email': email,
-        'name': name,
-        'surname': surname,
-        'weight': weight,
-        'type': 'user'
-      });
+      await db.collection('users').doc(uid).set(
+          {'email': email, 'name': name, 'surname': surname, 'type': 'user'});
       return true;
     } catch (e) {
       return false;

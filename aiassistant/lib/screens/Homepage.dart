@@ -4,6 +4,7 @@ import 'package:aiassistant/main.dart';
 import 'package:aiassistant/models/ChatMessage.dart';
 import 'package:aiassistant/screens/ChatMessageWidget.dart';
 import 'package:aiassistant/screens/Drawer.dart';
+import 'package:aiassistant/screens/SubscriptionScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -70,7 +71,13 @@ class _HomepageScreenState extends State<HomepageScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 30, vertical: 10),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SubscriptionScreen()),
+                        );
+                      },
                       child: const Text('Subscribe'),
                     ),
                   ],
