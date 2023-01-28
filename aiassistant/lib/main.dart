@@ -56,6 +56,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Fitness App',
+        color: const Color.fromRGBO(40, 38, 56, 1),
         theme: ThemeData(),
         home: (() {
           if (_isUserLoggedIn) {
