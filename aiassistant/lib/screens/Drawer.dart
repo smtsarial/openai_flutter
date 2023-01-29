@@ -1,4 +1,5 @@
 import 'package:aiassistant/main.dart';
+import 'package:aiassistant/screens/SubscriptionScreen.dart';
 import 'package:aiassistant/screens/widgets/SettingItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -52,7 +53,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           //for your subscription tab
           SettingItemWidget(
             onTap: () {
-              print('object');
+              //NAVIGATE TO SUBSCRIPTION SCREEN
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SubscriptionScreen()));
             },
             icon: Icon(Icons.subscriptions),
             title: 'Subscription',
