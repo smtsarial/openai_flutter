@@ -34,11 +34,13 @@ class _HomepageScreenState extends State<HomepageScreen> {
   @override
   void initState() {
     _prefs.then((value) => {checkUserHasRight()});
-    initilizeIAP();
-    Purchases.addCustomerInfoUpdateListener((customerInfo) {
-      updateCustomerInfo();
-    });
-    updateCustomerInfo();
+    initilizeIAP().then((value) => {
+          Purchases.addCustomerInfoUpdateListener((customerInfo) {
+            updateCustomerInfo();
+          }),
+          updateCustomerInfo()
+        });
+
     super.initState();
   }
 
@@ -249,20 +251,27 @@ class _HomepageScreenState extends State<HomepageScreen> {
   checkUserHasRight() async {
     final SharedPreferences prefs = await _prefs;
     final String? userUid = prefs.getString('userUid');
-    FirestoreHelper.checkUserHasAvaliable(userUid!).then((value) {
-      if (!value) {
-        setState(() {
-          showSubscribeWarning = true;
-        });
-      } else {
-        setState(() {
-          showSubscribeWarning = false;
-        });
-      }
-    });
+    try {
+      await FirestoreHelper.checkUserHasAvaliable(userUid!).then((value) {
+        if (!value) {
+          setState(() {
+            showSubscribeWarning = true;
+          });
+        } else {
+          setState(() {
+            showSubscribeWarning = false;
+          });
+        }
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        showSubscribeWarning = false;
+      });
+    }
   }
 
-  void initilizeIAP() async {
+  Future initilizeIAP() async {
     final SharedPreferences prefs = await _prefs;
     final String? userUid = await prefs.getString('userUid');
     await Purchases.configure(
@@ -271,7 +280,6 @@ class _HomepageScreenState extends State<HomepageScreen> {
 
   void updateCustomerInfo() async {
     CustomerInfo customerInfo = await Purchases.getCustomerInfo();
-    print('***********' + customerInfo.latestExpirationDate.toString());
     setState(() {
       isUserSubscribed =
           customerInfo.entitlements.all['pro_access']?.isActive ?? false;

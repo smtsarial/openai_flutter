@@ -1,5 +1,7 @@
+import 'package:aiassistant/constants.dart';
 import 'package:aiassistant/screens/Homepage.dart';
 import 'package:flutter/material.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'auth/LoginScreen.dart';
 import 'auth/authentication.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +11,8 @@ final auth = Authentication();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  await Purchases.configure(PurchasesConfiguration(appleApiKey));
   runApp(const MyApp());
 }
 

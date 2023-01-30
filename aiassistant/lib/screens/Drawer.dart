@@ -79,13 +79,13 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             title: 'Help',
           ),
           //tab for restore purchases
-          SettingItemWidget(
-            onTap: () {
-              print('object');
-            },
-            icon: Icon(Icons.restore),
-            title: 'Restore Purchases',
-          ),
+          // SettingItemWidget(
+          //   onTap: () {
+          //     print('object');
+          //   },
+          //   icon: Icon(Icons.restore),
+          //   title: 'Restore Purchases',
+          // ),
 
           SizedBox(
             height: 20,

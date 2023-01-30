@@ -18,13 +18,20 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
   @override
   void initState() {
-    print('obj111ect');
     initilizeIAP();
     Purchases.addCustomerInfoUpdateListener((customerInfo) {
       updateCustomerInfo();
     });
     updateCustomerInfo();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    Purchases.removeCustomerInfoUpdateListener((customerInfo) {
+      updateCustomerInfo();
+    });
+    super.dispose();
   }
 
   @override
@@ -57,28 +64,6 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                             fontSize: 25,
                             fontWeight: FontWeight.bold),
                       ),
-                      //BUTTON TO CANCEL SUBSCRIPTION
-                      // SizedBox(height: 30),
-                      // Container(
-                      //   width: double.infinity,
-                      //   height: 50,
-                      //   child: ElevatedButton(
-                      //     onPressed: () {},
-                      //     child: Text(
-                      //       'Cancel Subscription',
-                      //       style: TextStyle(
-                      //           color: Colors.white,
-                      //           fontSize: 20,
-                      //           fontWeight: FontWeight.bold),
-                      //     ),
-                      //     style: ElevatedButton.styleFrom(
-                      //       primary: Colors.red,
-                      //       shape: RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.circular(10),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
                     ])
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -86,13 +71,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   children: [
                     SizedBox(height: 20),
                     Icon(
-                      Icons.system_security_update,
-                      color: Colors.white,
-                      size: 75,
+                      Icons.lock,
+                      color: Colors.red,
+                      size: 100,
                     ),
                     SizedBox(height: 20),
                     Text(
                       'Unlock AI Assistant GPT Features',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
@@ -211,6 +197,8 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       setState(() {
         _products = offerings;
       });
+      //sort _products by price
+      _products.sort((a, b) => a.price.compareTo(b.price));
     } on PlatformException catch (e) {
       // optional error handling
       print(e);
@@ -219,7 +207,6 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
   void updateCustomerInfo() async {
     CustomerInfo customerInfo = await Purchases.getCustomerInfo();
-    print('***********' + customerInfo.latestExpirationDate.toString());
     setState(() {
       _userIsSubscribed =
           customerInfo.entitlements.all['pro_access']?.isActive ?? false;
