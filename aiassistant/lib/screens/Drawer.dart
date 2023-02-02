@@ -6,6 +6,7 @@ import 'package:aiassistant/screens/widgets/SettingItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -17,6 +18,7 @@ class DrawerWidget extends StatefulWidget {
 
 class _DrawerWidgetState extends State<DrawerWidget> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final InAppReview inAppReview = InAppReview.instance;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -45,14 +47,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           ),
 
           //container rounded gray border clickable item
-          SettingItemWidget(
-            onTap: () {
-              print('object');
-            },
-            icon: Icon(Icons.language),
-            title: 'Language',
-          ),
-          //for your subscription tab
+
           SettingItemWidget(
             onTap: () {
               //NAVIGATE TO SUBSCRIPTION SCREEN
@@ -99,8 +94,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           ),
           //tab for rate us
           SettingItemWidget(
-            onTap: () {
-              print('object');
+            onTap: () async {
+              if (await inAppReview.isAvailable()) {
+                inAppReview.requestReview();
+              }
             },
             icon: Icon(Icons.star),
             title: 'Rate Us',

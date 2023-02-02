@@ -72,7 +72,7 @@ class _SignupPageContent extends State<SignupPageContent> {
               width: 400,
               alignment: Alignment.center,
               child: Text(
-                "Sign up",
+                "Sign Up",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 34,
@@ -107,7 +107,9 @@ class _SignupPageContent extends State<SignupPageContent> {
           // Signup Info
           SingleChildScrollView(
             child: Container(
-              color: Colors.white,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.white),
               child: Column(
                 children: <Widget>[
                   TextFormField(
