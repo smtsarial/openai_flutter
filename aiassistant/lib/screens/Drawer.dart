@@ -1,5 +1,7 @@
 import 'package:aiassistant/main.dart';
+import 'package:aiassistant/screens/PrivacyPolicy.dart';
 import 'package:aiassistant/screens/SubscriptionScreen.dart';
+import 'package:aiassistant/screens/TermsOfUse.dart';
 import 'package:aiassistant/screens/widgets/SettingItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -114,7 +116,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           //tab for terms of use
           SettingItemWidget(
             onTap: () {
-              print('object');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TermsOfUse()));
             },
             icon: Icon(Icons.description),
             title: 'Terms of Use',
@@ -122,7 +125,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           //tab for privacy policy
           SettingItemWidget(
             onTap: () {
-              print('object');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PrivacyPolicy()));
             },
             icon: Icon(Icons.privacy_tip),
             title: 'Privacy Policy',
