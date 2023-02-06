@@ -26,6 +26,7 @@ class PrivacyPolicy extends StatelessWidget {
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.white)),
+              SizedBox(height: 10),
               Text(
                 '''
 

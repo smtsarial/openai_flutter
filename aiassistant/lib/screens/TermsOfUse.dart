@@ -25,6 +25,7 @@ class TermsOfUse extends StatelessWidget {
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.white)),
+              SizedBox(height: 20),
               Text(
                 '''
 These terms will automatically apply to you if you download or use the app, so you should be sure you properly read them before using the app. The app, any component of the app, or our trademarks may not be copied or modified in any way. The app's source code cannot be attempted to be extracted, and creating derivative versions or translating the app into other languages is not permitted. The application itself, as well as all associated trademarks, copyrights, database rights, and other IP.

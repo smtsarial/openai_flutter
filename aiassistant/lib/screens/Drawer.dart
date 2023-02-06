@@ -49,7 +49,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
-
+          SizedBox(
+            height: 10,
+          ),
           //container rounded gray border clickable item
 
           SettingItemWidget(
@@ -70,6 +72,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             'SUPPORT',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          SizedBox(
+            height: 10,
           ),
           //tab for help
           SettingItemWidget(
@@ -96,6 +101,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             'ABOUT',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          SizedBox(
+            height: 10,
           ),
           //tab for rate us
           SettingItemWidget(
