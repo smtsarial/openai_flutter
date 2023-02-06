@@ -805,6 +805,8 @@ PODS:
     - Libuv-gRPC (= 0.0.10)
   - gRPC-Core/Interface (1.44.0)
   - GTMSessionFetcher/Core (3.1.0)
+  - in_app_review (0.2.0):
+    - Flutter
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -817,6 +819,9 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - PromisesObjC (2.1.1)
   - purchases_flutter (4.8.0):
     - Flutter
@@ -824,9 +829,13 @@ PODS:
   - PurchasesHybridCommon (4.10.0):
     - RevenueCat (= 4.17.2)
   - RevenueCat (4.17.2)
+  - share_plus (0.0.1):
+    - Flutter
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - store_launcher (0.0.1):
+    - Flutter
   - url_launcher_ios (0.0.1):
     - Flutter
 
@@ -838,8 +847,12 @@ DEPENDENCIES:
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
+  - in_app_review (from `.symlinks/plugins/in_app_review/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - purchases_flutter (from `.symlinks/plugins/purchases_flutter/ios`)
+  - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/ios`)
+  - store_launcher (from `.symlinks/plugins/store_launcher/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -886,10 +899,18 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
+  in_app_review:
+    :path: ".symlinks/plugins/in_app_review/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/ios"
   purchases_flutter:
     :path: ".symlinks/plugins/purchases_flutter/ios"
+  share_plus:
+    :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/ios"
+  store_launcher:
+    :path: ".symlinks/plugins/store_launcher/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -921,14 +942,18 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
+  in_app_review: 318597b3a06c22bb46dc454d56828c85f444f99d
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   purchases_flutter: 68c500192f462e5e6c754cd93f8caa97668521aa
   PurchasesHybridCommon: 2c254caadc6b50238a79902c01abec67353b5334
   RevenueCat: ad2623febfb1303e90a9b77c796dd1b641547096
+  share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_foundation: 297b3ebca31b34ec92be11acd7fb0ba932c822ca
+  store_launcher: a3ce2e0e9ff758ac1278f97a0bbb8210c2a621a6
   url_launcher_ios: ae1517e5e344f5544fb090b079e11f399dfbe4d2
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d

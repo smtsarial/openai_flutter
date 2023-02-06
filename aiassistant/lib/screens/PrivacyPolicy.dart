@@ -2,6 +2,7 @@ import 'package:aiassistant/screens/ChatMessageWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PrivacyPolicy extends StatelessWidget {
   const PrivacyPolicy({super.key});
@@ -193,18 +194,71 @@ Google Analytics is a web analytics service offered by Google that tracks and re
 
 You may opt-out of certain Google Analytics features through your mobile device settings, such as your device advertising settings or by following the instructions provided by Google in their Privacy Policy: https://policies.google.com/privacy?hl=en
 
-For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: https://policies.google.com/privacy?hl=en
+For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page:''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://policies.google.com/privacy?hl=en');
+                },
+                child: Text(
+                  '''https://policies.google.com/privacy?hl=en''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
 Firebase
 Firebase is an analytics service provided by Google Inc.
 
 You may opt-out of certain Firebase features through your mobile device settings, such as your device advertising settings or by following the instructions provided by Google in their Privacy Policy: https://policies.google.com/privacy?hl=en
 
-We also encourage you to review the Google's policy for safeguarding your data: https://support.google.com/analytics/answer/6004245.
-
-For more information on what type of information Firebase collects, please visit the Google Privacy & Terms web page: https://policies.google.com/privacy?hl=en
-
-Advertising
+We also encourage you to review the Google's policy for safeguarding your data: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://support.google.com/analytics/answer/6004245');
+                },
+                child: Text(
+                  '''https://support.google.com/analytics/answer/6004245''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''For more information on what type of information Firebase collects, please visit the Google Privacy & Terms web page:''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://policies.google.com/privacy?hl=en');
+                },
+                child: Text(
+                  '''https://policies.google.com/privacy?hl=en''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''Advertising
 
 We may use third-party Service Providers to show advertisements to you to help support and maintain our Service.
 
@@ -216,7 +270,26 @@ You may opt out of the use of the DoubleClick Cookie for interest-based advertis
 AdMob by Google
 AdMob by Google is provided by Google Inc.
 
-You can opt-out from the AdMob by Google service by following the instructions described by Google: https://support.google.com/ads/answer/2662922?hl=en
+You can opt-out from the AdMob by Google service by following the instructions described by Google: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://support.google.com/ads/answer/2662922?hl=en');
+                },
+                child: Text(
+                  '''https://support.google.com/ads/answer/2662922?hl=en''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
 For more information on how Google uses the collected information, please visit the "How Google uses data when you use our partners' sites or app" page: http://www.google.com/policies/privacy/partners/ or visit the Privacy Policy of Google: http://www.google.com/policies/privacy/
 
@@ -229,27 +302,159 @@ Google Ads (AdWords) remarketing service is provided by Google Inc.
 
 You can opt-out of Google Analytics for Display Advertising and customise the Google Display Network ads by visiting the Google Ads Settings page: http://www.google.com/settings/ads
 
-Google also recommends installing the Google Analytics Opt-out Browser Add-on - https://tools.google.com/dlpage/gaoptout - for your web browser. Google Analytics Opt-out Browser Add-on provides visitors with the ability to prevent their data from being collected and used by Google Analytics.
+Google also recommends installing the Google Analytics Opt-out Browser Add-on - ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://tools.google.com/dlpage/gaoptout');
+                },
+                child: Text(
+                  '''https://tools.google.com/dlpage/gaoptout''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                ''' - for your web browser. Google Analytics Opt-out Browser Add-on provides visitors with the ability to prevent their data from being collected and used by Google Analytics.
 
-For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: https://policies.google.com/privacy?hl=en
+For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://policies.google.com/privacy?hl=en');
+                },
+                child: Text(
+                  '''https://policies.google.com/privacy?hl=en''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
 Twitter
 Twitter remarketing service is provided by Twitter Inc.
 
-You can opt-out from Twitter's interest-based ads by following their instructions: https://support.twitter.com/articles/20170405
-
-You can learn more about the privacy practices and policies of Twitter by visiting their Privacy Policy page: https://twitter.com/privacy
+You can opt-out from Twitter's interest-based ads by following their instructions: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://support.twitter.com/articles/20170405');
+                },
+                child: Text(
+                  '''https://support.twitter.com/articles/20170405''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''You can learn more about the privacy practices and policies of Twitter by visiting their Privacy Policy page: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://twitter.com/privacy');
+                },
+                child: Text(
+                  '''https://twitter.com/privacy''',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
 Facebook
 Facebook remarketing service is provided by Facebook Inc.
 
-You can learn more about interest-based advertising from Facebook by visiting this page: https://www.facebook.com/help/164968693837950
+You can learn more about interest-based advertising from Facebook by visiting this page: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://www.facebook.com/help/164968693837950');
+                },
+                child: Text(
+                  '''https://www.facebook.com/help/164968693837950''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
-To opt-out from Facebook's interest-based ads, follow these instructions from Facebook: https://www.facebook.com/help/568137493302217
+To opt-out from Facebook's interest-based ads, follow these instructions from Facebook: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://www.facebook.com/help/568137493302217');
+                },
+                child: Text(
+                  '''https://www.facebook.com/help/568137493302217''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
 Facebook adheres to the Self-Regulatory Principles for Online Behavioural Advertising established by the Digital Advertising Alliance. You can also opt-out from Facebook and other participating companies through the Digital Advertising Alliance in the USA http://www.aboutads.info/choices/, the Digital Advertising Alliance of Canada in Canada http://youradchoices.ca/ or the European Interactive Digital Advertising Alliance in Europe http://www.youronlinechoices.eu/, or opt-out using your mobile device settings.
 
-For more information on the privacy practices of Facebook, please visit Facebook's Data Policy: https://www.facebook.com/privacy/explanation
+For more information on the privacy practices of Facebook, please visit Facebook's Data Policy: ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://www.facebook.com/privacy/explanation');
+                },
+                child: Text(
+                  '''https://www.facebook.com/privacy/explanation''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
 Payments
 We may provide paid products and/or services within the Service. In that case, we use third-party services for payment processing (e.g. payment processors).
@@ -259,7 +464,26 @@ We will not store or collect your payment card details. That information is prov
 The payment processors we work with are:
 
 Apple Store In-App Payments
-Their Privacy Policy can be viewed at https://www.apple.com/legal/privacy/en-ww/
+Their Privacy Policy can be viewed at ''',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  launch('https://www.apple.com/legal/privacy/en-ww/');
+                },
+                child: Text(
+                  '''https://www.apple.com/legal/privacy/en-ww/''',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              ),
+              Text(
+                '''
 
 Links to Other Sites
 Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.
@@ -291,5 +515,11 @@ If you have any questions about this Privacy Policy, please contact us.
         ),
       )),
     );
+  }
+
+  Future<void> _launchUrl(_url) async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 }

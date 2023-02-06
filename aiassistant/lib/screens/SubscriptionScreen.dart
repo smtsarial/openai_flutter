@@ -66,8 +66,6 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       ),
                     ])
               : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(height: 20),
                     Icon(
@@ -85,40 +83,47 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.done, color: Colors.green),
-                        SizedBox(width: 10),
-                        Text(
-                          'Unlimited Usage',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.done, color: Colors.green),
-                        SizedBox(width: 10),
-                        Text(
-                          'Most Advanced AI Model',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.done, color: Colors.green),
-                        SizedBox(width: 10),
-                        Text(
-                          'Cancel Anytime',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.done, color: Colors.green),
+                              SizedBox(width: 10),
+                              Text(
+                                'Unlimited Usage',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            children: [
+                              Icon(Icons.done, color: Colors.green),
+                              SizedBox(width: 10),
+                              Text(
+                                'Most Advanced AI Model',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            children: [
+                              Icon(Icons.done, color: Colors.green),
+                              SizedBox(width: 10),
+                              Text(
+                                'Cancel Anytime',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 40),
                     _showLoading

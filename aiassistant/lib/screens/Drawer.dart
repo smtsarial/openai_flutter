@@ -1,4 +1,5 @@
 import 'package:aiassistant/main.dart';
+import 'package:aiassistant/screens/HelpScreen.dart';
 import 'package:aiassistant/screens/PrivacyPolicy.dart';
 import 'package:aiassistant/screens/SubscriptionScreen.dart';
 import 'package:aiassistant/screens/TermsOfUse.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -19,6 +21,7 @@ class DrawerWidget extends StatefulWidget {
 class _DrawerWidgetState extends State<DrawerWidget> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final InAppReview inAppReview = InAppReview.instance;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -34,6 +37,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           Container(
             alignment: Alignment.topRight,
             child: IconButton(
+              color: Colors.white,
               icon: Icon(Icons.close),
               onPressed: () {
                 Navigator.pop(context);
@@ -70,7 +74,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           //tab for help
           SettingItemWidget(
             onTap: () {
-              print('object');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HelpScreen()));
             },
             icon: Icon(Icons.help),
             title: 'Help',
@@ -95,9 +100,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           //tab for rate us
           SettingItemWidget(
             onTap: () async {
-              if (await inAppReview.isAvailable()) {
-                inAppReview.requestReview();
-              }
+              inAppReview.requestReview();
             },
             icon: Icon(Icons.star),
             title: 'Rate Us',
@@ -106,6 +109,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           SettingItemWidget(
             onTap: () {
               print('object');
+              //1668537791
+              Share.share(
+                  'Check this application https://apps.apple.com/us/app/ai-assistant-gpt/id1668537791',
+                  subject: 'Look what I found!');
             },
             icon: Icon(Icons.share),
             title: 'Share with Friends',

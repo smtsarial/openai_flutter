@@ -1,3 +1,4 @@
+import 'package:aiassistant/auth/ResetPasswordScreen.dart';
 import 'package:aiassistant/auth/SignUpScreen.dart';
 import 'package:aiassistant/auth/authentication.dart';
 import 'package:aiassistant/main.dart';
@@ -88,7 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               // Textfields for username and password fields
               Container(
-                height: 140,
                 width: 530,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -156,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                     : ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.orange,
+                          primary: Color.fromRGBO(58, 174, 159, 1),
                         ),
                         child: Text("Submit",
                             style: TextStyle(color: Colors.white)),
@@ -188,34 +188,59 @@ class _LoginScreenState extends State<LoginScreen> {
                         }),
               ),
 
-              // Register
               Container(
-                  padding: EdgeInsets.only(top: 40, left: 20, right: 20),
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                   child: Center(
-                      child: RichText(
-                    text: TextSpan(
-                      text: "Dont have an account? ",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                      ),
+                    child: Column(
                       children: [
-                        TextSpan(
-                            text: " Register here",
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ResetPasswordScreen()));
+                          },
+                          child: Text(
+                            " Reset Password",
                             style: TextStyle(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold),
-                            recognizer: new TapGestureRecognizer()
-                              ..onTap = () => {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignupPage()),
-                                    )
-                                  }),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Don't have an account?",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignupPage()),
+                            );
+                          },
+                          child: Text(
+                            "Register",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                  )))
+                  ))
             ],
           )),
     );

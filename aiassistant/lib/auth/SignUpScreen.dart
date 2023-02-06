@@ -229,7 +229,7 @@ class _SignupPageContent extends State<SignupPageContent> {
             padding: EdgeInsets.only(top: 20),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
+                  primary: Color.fromRGBO(58, 174, 159, 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

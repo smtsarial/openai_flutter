@@ -8,6 +8,7 @@ import 'package:aiassistant/screens/Drawer.dart';
 import 'package:aiassistant/screens/SubscriptionScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:purchases_flutter/models/purchases_configuration.dart';
@@ -46,67 +47,78 @@ class _HomepageScreenState extends State<HomepageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('AI Assistant'),
-        backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('AI Assistant GPT'),
+          backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
+        ),
+        drawer: DrawerWidget(),
+        backgroundColor: backgroundColor,
+        body: SafeArea(
+            child: showSubscribeWarning
+                ? isUserSubscribed
+                    ? Content()
+                    : SubscribeWidget()
+                : Content()),
       ),
-      drawer: DrawerWidget(),
-      backgroundColor: backgroundColor,
-      body: SafeArea(
-          child: showSubscribeWarning
-              ? isUserSubscribed
-                  ? Content()
-                  : SubscribeWidget()
-              : Content()),
     );
   }
 
   Widget _buildSubmit() {
-    return Visibility(
-      visible: !isLoading,
-      child: Container(
-        color: botBackgroundColor,
-        child: IconButton(
-          icon: const Icon(
-            Icons.send_rounded,
-            color: Color.fromRGBO(142, 142, 160, 1),
-          ),
-          onPressed: () async {
-            setState(
-              () {
-                _messages.add(
-                  ChatMessage(
-                    text: _textController.text,
-                    chatMessageType: ChatMessageType.user,
-                  ),
+    return isLoading
+        ? Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            ),
+          )
+        : Container(
+            color: botBackgroundColor,
+            child: IconButton(
+              icon: const Icon(
+                Icons.send_rounded,
+                color: Color.fromRGBO(142, 142, 160, 1),
+              ),
+              onPressed: () async {
+                setState(
+                  () {
+                    _messages.add(
+                      ChatMessage(
+                        text: _textController.text,
+                        chatMessageType: ChatMessageType.user,
+                      ),
+                    );
+                    isLoading = true;
+                  },
                 );
-                isLoading = true;
+                var input = _textController.text;
+                _textController.clear();
+                Future.delayed(const Duration(milliseconds: 50))
+                    .then((_) => _scrollDown());
+                generateResponse(input).then((value) {
+                  setState(() {
+                    isLoading = false;
+                    _messages.add(
+                      ChatMessage(
+                        text: value,
+                        chatMessageType: ChatMessageType.bot,
+                      ),
+                    );
+                  });
+                });
+                _textController.clear();
+                checkUserHasRight();
+                Future.delayed(const Duration(milliseconds: 50))
+                    .then((_) => _scrollDown());
               },
-            );
-            var input = _textController.text;
-            _textController.clear();
-            Future.delayed(const Duration(milliseconds: 50))
-                .then((_) => _scrollDown());
-            generateResponse(input).then((value) {
-              setState(() {
-                isLoading = false;
-                _messages.add(
-                  ChatMessage(
-                    text: value,
-                    chatMessageType: ChatMessageType.bot,
-                  ),
-                );
-              });
-            });
-            _textController.clear();
-            checkUserHasRight();
-            Future.delayed(const Duration(milliseconds: 50))
-                .then((_) => _scrollDown());
-          },
-        ),
-      ),
-    );
+            ),
+          );
   }
 
   Expanded _buildInput() {
@@ -115,6 +127,8 @@ class _HomepageScreenState extends State<HomepageScreen> {
         textCapitalization: TextCapitalization.sentences,
         style: const TextStyle(color: Colors.white),
         controller: _textController,
+        maxLines: 15,
+        minLines: 1,
         decoration: const InputDecoration(
           fillColor: botBackgroundColor,
           filled: true,
@@ -294,15 +308,6 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 child: _buildList(),
               )
             : noInputWidget(),
-        Visibility(
-          visible: isLoading,
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: CircularProgressIndicator(
-              color: Colors.white,
-            ),
-          ),
-        ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -339,7 +344,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: const Color.fromRGBO(16, 163, 127, 1),
+              primary: Color.fromRGBO(58, 174, 159, 1),
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             ),
             onPressed: () {
