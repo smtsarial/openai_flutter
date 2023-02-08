@@ -68,10 +68,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               : Column(
                   children: [
                     SizedBox(height: 20),
-                    Icon(
-                      Icons.lock,
-                      color: Colors.red,
-                      size: 100,
+                    Image.asset(
+                      'assets/logo.png',
+                      height: 150,
                     ),
                     SizedBox(height: 20),
                     Text(

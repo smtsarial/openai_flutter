@@ -108,7 +108,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           //tab for rate us
           SettingItemWidget(
             onTap: () async {
-              inAppReview.requestReview();
+              try {
+                await inAppReview.requestReview();
+              } catch (e) {
+                print(e);
+              }
             },
             icon: Icon(Icons.star),
             title: 'Rate Us',
