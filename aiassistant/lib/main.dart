@@ -1,6 +1,7 @@
 import 'package:aiassistant/constants.dart';
 import 'package:aiassistant/screens/Homepage.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'auth/LoginScreen.dart';
 import 'auth/authentication.dart';
@@ -27,6 +28,7 @@ class _MyAppState extends State<MyApp> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   bool _isUserLoggedIn = false;
+  bool _permissionError = false;
 
   Future<bool> getUserLoggedIn() async {
     final SharedPreferences prefs = await _prefs;
@@ -48,6 +50,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     this.getUserLoggedIn();
+    this.initilize();
     super.initState();
   }
 
@@ -59,11 +62,57 @@ class _MyAppState extends State<MyApp> {
         color: const Color.fromRGBO(40, 38, 56, 1),
         theme: ThemeData(),
         home: (() {
-          if (_isUserLoggedIn) {
-            return HomepageScreen();
+          if (_permissionError) {
+            return Scaffold(
+                resizeToAvoidBottomInset: true,
+                backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
+                body: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Text(
+                          'Please enable app permissions.',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            openAppSettings();
+                          },
+                          child: Text('Open App Settings')),
+                    ],
+                  ),
+                ));
           } else {
-            return LoginScreen();
+            if (_isUserLoggedIn) {
+              return HomepageScreen();
+            } else {
+              return LoginScreen();
+            }
           }
         }()));
+  }
+
+  void initilize() async {
+    //   if (await Permission.appTrackingTransparency.isPermanentlyDenied) {
+    //     setState(() {
+    //       _permissionError = true;
+    //     });
+    //   } else {
+    //     await Permission.appTrackingTransparency.request().then((value) {
+    //       if (value == PermissionStatus.granted) {
+    //         Purchases.setAllowSharingStoreAccount(true);
+    //         setState(() {
+    //           _permissionError = false;
+    //         });
+    //       } else {
+    //         setState(() {
+    //           _permissionError = true;
+    //         });
+    //       }
+    //     });
+    //   }
   }
 }

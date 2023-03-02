@@ -2,6 +2,7 @@ import 'package:aiassistant/screens/ChatMessageWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TermsOfUse extends StatelessWidget {
   const TermsOfUse({super.key});
@@ -26,6 +27,21 @@ class TermsOfUse extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white)),
               SizedBox(height: 20),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    launch(
+                        'https://aiassistantgpt.wordpress.com/2023/02/10/ai-assistant-gpt-terms-and-conditions/');
+                  },
+                  child: Text(
+                    '''https://aiassistantgpt.wordpress.com/2023/02/10/ai-assistant-gpt-terms-and-conditions/''',
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue),
+                  ),
+                ),
+              ),
               Text(
                 '''
 These terms will automatically apply to you if you download or use the app, so you should be sure you properly read them before using the app. The app, any component of the app, or our trademarks may not be copied or modified in any way. The app's source code cannot be attempted to be extracted, and creating derivative versions or translating the app into other languages is not permitted. The application itself, as well as all associated trademarks, copyrights, database rights, and other IP.
@@ -60,5 +76,11 @@ Our Terms and Conditions may occasionally be updated. As a result, you are urged
         ),
       )),
     );
+  }
+
+  Future<void> _launchUrl(_url) async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 }

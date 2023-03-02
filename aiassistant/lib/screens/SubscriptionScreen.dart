@@ -57,7 +57,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        'You have subscribed to AI Assistant GPT!',
+                        'You have subscribed to My AI Assistant!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
@@ -74,7 +74,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Unlock AI Assistant GPT Features',
+                      'Unlock My AI Assistant Features',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
