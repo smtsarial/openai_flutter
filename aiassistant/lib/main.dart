@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    this.getUserLoggedIn();
+    // this.getUserLoggedIn();
     this.initilize();
     super.initState();
   }
@@ -86,33 +86,31 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ));
           } else {
-            if (_isUserLoggedIn) {
-              return HomepageScreen();
-            } else {
-              return LoginScreen();
-            }
+            return HomepageScreen();
+            // if (_isUserLoggedIn) {
+            //   return HomepageScreen();
+            // } else {
+            //   return LoginScreen();
+            // }
           }
         }()));
   }
 
   void initilize() async {
-    //   if (await Permission.appTrackingTransparency.isPermanentlyDenied) {
-    //     setState(() {
-    //       _permissionError = true;
-    //     });
-    //   } else {
-    //     await Permission.appTrackingTransparency.request().then((value) {
-    //       if (value == PermissionStatus.granted) {
-    //         Purchases.setAllowSharingStoreAccount(true);
-    //         setState(() {
-    //           _permissionError = false;
-    //         });
-    //       } else {
-    //         setState(() {
-    //           _permissionError = true;
-    //         });
-    //       }
-    //     });
-    //   }
+    while (await Permission.appTrackingTransparency.request().isDenied) {
+      await Future.delayed(Duration(seconds: 1));
+      await Permission.appTrackingTransparency.request().then((value) {
+        if (value == PermissionStatus.granted) {
+          Purchases.setAllowSharingStoreAccount(true);
+          setState(() {
+            _permissionError = false;
+          });
+        } else {
+          setState(() {
+            _permissionError = false;
+          });
+        }
+      });
+    }
   }
 }

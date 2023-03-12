@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aiassistant/constants.dart';
 import 'package:aiassistant/helpers/chat-gpt.dart';
 import 'package:aiassistant/helpers/firestore.dart';
@@ -6,6 +8,7 @@ import 'package:aiassistant/models/ChatMessage.dart';
 import 'package:aiassistant/screens/ChatMessageWidget.dart';
 import 'package:aiassistant/screens/Drawer.dart';
 import 'package:aiassistant/screens/SubscriptionScreen.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,13 +37,15 @@ class _HomepageScreenState extends State<HomepageScreen> {
 
   @override
   void initState() {
-    _prefs.then((value) => {checkUserHasRight()});
-    initilizeIAP().then((value) => {
-          Purchases.addCustomerInfoUpdateListener((customerInfo) {
-            updateCustomerInfo();
-          }),
-          updateCustomerInfo()
-        });
+    checkDeviceRegistered().then((value) {
+      _prefs.then((value) => {checkUserHasRight()});
+      initilizeIAP().then((value) => {
+            Purchases.addCustomerInfoUpdateListener((customerInfo) {
+              updateCustomerInfo();
+            }),
+            updateCustomerInfo()
+          });
+    });
 
     super.initState();
   }
@@ -262,6 +267,18 @@ class _HomepageScreenState extends State<HomepageScreen> {
     );
   }
 
+  Future<String?> _getId() async {
+    var deviceInfo = DeviceInfoPlugin();
+    if (Platform.isIOS) {
+      // import 'dart:io'
+      var iosDeviceInfo = await deviceInfo.iosInfo;
+      return iosDeviceInfo.identifierForVendor; // unique ID on iOS
+    } else if (Platform.isAndroid) {
+      var androidDeviceInfo = await deviceInfo.androidInfo;
+      return androidDeviceInfo.id; // unique ID on Android
+    }
+  }
+
   checkUserHasRight() async {
     final SharedPreferences prefs = await _prefs;
     final String? userUid = prefs.getString('userUid');
@@ -358,5 +375,22 @@ class _HomepageScreenState extends State<HomepageScreen> {
         ],
       ),
     );
+  }
+
+  Future checkDeviceRegistered() async {
+    String? deviceId = await _getId();
+    print('deviceId' + deviceId.toString());
+    await FirestoreHelper.checkDeviceRegistered(deviceId!).then((value) {
+      if (value.runtimeType == String) {
+        print('data is already registered');
+        //SET USER UID TO SHARED PREFERENCES
+        _prefs.then((SharedPreferences prefs) {
+          prefs.setString('userUid', value);
+        });
+      } else {
+        print('data is not registered');
+        FirestoreHelper.registerDevice(deviceId);
+      }
+    });
   }
 }

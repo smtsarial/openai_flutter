@@ -1,6 +1,7 @@
 import 'package:aiassistant/main.dart';
 import 'package:aiassistant/screens/HelpScreen.dart';
 import 'package:aiassistant/screens/PrivacyPolicy.dart';
+import 'package:aiassistant/screens/RestoreSubscription.dart';
 import 'package:aiassistant/screens/SubscriptionScreen.dart';
 import 'package:aiassistant/screens/TermsOfUse.dart';
 import 'package:aiassistant/screens/widgets/SettingItem.dart';
@@ -148,17 +149,17 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             title: 'Privacy Policy',
           ),
 
-          SettingItemWidget(
-            onTap: () async {
-              auth.signOut();
-              final SharedPreferences prefs = await _prefs;
-              prefs.clear();
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
-            },
-            icon: Icon(Icons.logout),
-            title: 'Logout',
-          ),
+          // SettingItemWidget(
+          //   onTap: () async {
+          //     auth.signOut();
+          //     final SharedPreferences prefs = await _prefs;
+          //     prefs.clear();
+          //     Navigator.pushReplacement(
+          //         context, MaterialPageRoute(builder: (context) => MyApp()));
+          //   },
+          //   icon: Icon(Icons.logout),
+          //   title: 'Logout',
+          // ),
         ],
       ),
     );
