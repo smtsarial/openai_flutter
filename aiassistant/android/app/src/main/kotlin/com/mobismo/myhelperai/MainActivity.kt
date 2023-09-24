@@ -1,4 +1,4 @@
-package com.example.aiassistant
+package com.mobismo.myhelperai
 
 import io.flutter.embedding.android.FlutterActivity
 

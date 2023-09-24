@@ -113,7 +113,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           ),
                           SizedBox(height: 20),
                           Text(
-                            'You have subscribed to My AI Assistant!',
+                            'You have subscribed to My AI Helper!',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
@@ -129,7 +129,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                         ),
                         SizedBox(height: 20),
                         Text(
-                          'Unlock My AI Assistant Features',
+                          'Unlock My AI Helper Features',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white,

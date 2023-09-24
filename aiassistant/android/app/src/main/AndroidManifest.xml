@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.aiassistant">
+    package="com.mobismo.myhelperai">
    <application
         android:label="aiassistant"
         android:name="${applicationName}"

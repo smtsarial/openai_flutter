@@ -58,7 +58,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('My AI Assistant'),
+          title: Text('My AI Helper'),
           backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
         ),
         drawer: DrawerWidget(),
